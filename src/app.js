@@ -10,7 +10,7 @@ const errorHandler = require("./middlewares/errorHandler");
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: process.env.ALLOWED_ORIGIN || "http://localhost:3000" }));
+app.use(cors({ origin: true }));
 app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
