@@ -8,8 +8,8 @@ const createError = (message, statusCode) => {
 };
 
 exports.create = asyncHandler(async (req, res) => {
-  const { name, phoneNo, realAge, bodyAge, quiz } = req.body;
-  const user = await createUser({ name, phoneNo, realAge, bodyAge, quiz });
+  const { name, phoneNo, realAge, bodyAge } = req.body;
+  const user = await createUser({ name, phoneNo, realAge, bodyAge });
   res.status(201).json({ success: true, data: user });
 });
 

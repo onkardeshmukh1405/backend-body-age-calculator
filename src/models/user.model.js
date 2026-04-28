@@ -11,12 +11,6 @@ const userSchema = new mongoose.Schema(
     },
     realAge: { type: Number },
     bodyAge: { type: Number },
-    quiz: [
-      {
-        question: { type: String },
-        answer: { type: String },
-      },
-    ],
   },
   { timestamps: true },
 );
