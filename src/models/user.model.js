@@ -8,10 +8,6 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
       trim: true,
-      match: [
-        /^\d{12}$/,
-        "phoneNo must be a 10-digit number with country code",
-      ],
     },
     realAge: { type: Number },
     bodyAge: { type: Number },
