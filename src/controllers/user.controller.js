@@ -1,5 +1,5 @@
 const asyncHandler = require("../utils/asyncHandler");
-const { createUser, getAllUsers, updateUser } = require("../services/user.service");
+const { createUser, getAllUsers, getUserCount, getUserByPhone, updateUser } = require("../services/user.service");
 
 const createError = (message, statusCode) => {
   const err = new Error(message);
@@ -15,7 +15,18 @@ exports.create = asyncHandler(async (req, res) => {
 
 exports.getAll = asyncHandler(async (req, res) => {
   const users = await getAllUsers();
-  res.json({ success: true, count: users.length, data: users });
+  res.json({ success: true, data: users });
+});
+
+exports.getCount = asyncHandler(async (_req, res) => {
+  const count = await getUserCount();
+  res.json({ success: true, count });
+});
+
+exports.getByPhone = asyncHandler(async (req, res, next) => {
+  const user = await getUserByPhone(req.params.phoneNo);
+  if (!user) return res.json({ success: false });
+  res.json({ success: true, data: user });
 });
 
 exports.update = asyncHandler(async (req, res, next) => {

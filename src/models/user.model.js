@@ -8,18 +8,21 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
       trim: true,
-      match: [/^\d{12}$/, "phoneNo must be a 10-digit number with country code"],
+      match: [
+        /^\d{12}$/,
+        "phoneNo must be a 10-digit number with country code",
+      ],
     },
-    realAge: { type: Number, required: true },
-    bodyAge: { type: Number, required: true },
+    realAge: { type: Number },
+    bodyAge: { type: Number },
     quiz: [
       {
-        question: { type: String, required: true },
-        answer: { type: String, required: true },
+        question: { type: String },
+        answer: { type: String },
       },
     ],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports = mongoose.model("User", userSchema);
